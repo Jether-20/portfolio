@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Jether C. Bagor
 
-## Getting Started
+A personal portfolio website built with **Next.js 16 (App Router)**, **React 19**,
+**TypeScript (strict)**, and **Tailwind CSS v4**, rendered statically and served on
+**Turbopack**.
 
-First, run the development server:
+## Highlights
+
+- **Server Components by default.** Only four interactive leaves are client
+  components: `ThemeProvider`, `ThemeToggle`, `MobileNav`, and `ContactForm`.
+- **Static-first.** Every section prerenders to HTML at build time — no runtime
+  data fetching.
+- **Content is data.** Edit `src/content/*.ts`; the UI maps over it. Nothing is
+  hardcoded in JSX.
+- **Dark / light mode** via `next-themes`, respecting system preference.
+- **SEO:** Metadata API (title/description/OG/Twitter), `sitemap.ts`, `robots.ts`,
+  and a build-time Open Graph image (`opengraph-image.tsx`).
+- **Accessible:** semantic landmarks, skip link, keyboard nav, visible focus,
+  labelled icons, AA contrast.
+- **No database**, no UI library, no state library — just what the site needs.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000 (Turbopack)
+npm run build    # production build (Turbopack)
+npm run start    # serve the production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | Where |
+| --- | --- |
+| Name, role, tagline, description, social links, nav | `src/content/site.ts` |
+| Projects (title, description, tech, links, image) | `src/content/projects.ts` |
+| Skills (grouped) | `src/content/skills.ts` |
+| About paragraphs | `src/components/sections/About.tsx` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Project screenshots are optional: add an image to `/public`, then set
+`image: { src: "/your-shot.png", alt: "…" }` on the project. Without one, the card
+shows a styled gradient header.
 
-## Learn More
+## Contact form (optional — Resend)
 
-To learn more about Next.js, take a look at the following resources:
+The form submits via a Server Action (`src/lib/actions.ts`) that emails through
+[Resend](https://resend.com) and stores nothing. It works without configuration —
+it just shows an "email me directly" message until you add a key.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Copy `.env.example` → `.env.local`
+2. Set `RESEND_API_KEY` (and optionally `CONTACT_TO_EMAIL` / `CONTACT_FROM_EMAIL`)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+A `mailto:` link is always available as a fallback.
 
-## Deploy on Vercel
+## Deploy to Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push this folder to a GitHub repository.
+2. Import it at [vercel.com/new](https://vercel.com/new) — framework auto-detects
+   as Next.js, no config needed.
+3. (Optional) add the Resend env vars in the Vercel project settings.
+4. Update `site.url` in `src/content/site.ts` to your final domain so OG and
+   canonical/sitemap URLs are absolute.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech
+
+Next.js 16 · React 19 · TypeScript 5 · Tailwind CSS v4 · next-themes · Resend ·
+Turbopack
