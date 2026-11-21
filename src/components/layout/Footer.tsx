@@ -9,9 +9,9 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-zinc-200 dark:border-zinc-800">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 px-6 py-10 sm:flex-row">
-        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+    <footer className="border-t border-[var(--border)]">
+      <div className="mx-auto flex max-w-[1536px] flex-col items-center justify-between gap-6 px-6 py-10 sm:flex-row">
+        <p className="text-sm text-[var(--text-muted)]">
           &copy; {year} {site.name}. Built with Next.js &amp; Tailwind CSS.
         </p>
         <SocialLinks />

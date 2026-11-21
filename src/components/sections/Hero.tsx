@@ -1,61 +1,40 @@
-/**
- * Hero section (Server Component). Renders identity + tagline from site config.
- * `id="top"` is the scroll target for the header brand link.
- */
-import { site } from "@/content/site";
-import { SocialLinks } from "@/components/ui/SocialLinks";
-import { ArrowDownIcon } from "@/components/ui/Icons";
+﻿import Image from "next/image";
 
 export function Hero() {
   return (
-    <section
-      id="top"
-      aria-labelledby="hero-heading"
-      className="relative mx-auto flex min-h-[calc(100dvh-4rem)] w-full max-w-5xl flex-col justify-center px-6 py-20"
-    >
-      <p className="mb-4 text-base font-medium text-indigo-600 dark:text-indigo-400">
-        Hi, my name is
-      </p>
-
-      <h1
-        id="hero-heading"
-        className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-6xl dark:text-zinc-50"
-      >
-        {site.name}
-      </h1>
-
-      <p className="mt-3 text-2xl font-semibold text-zinc-500 sm:text-3xl dark:text-zinc-400">
-        {site.role}
-      </p>
-
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
-        {site.tagline}
-      </p>
-
-      <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-        <a
-          href="#projects"
-          className="inline-flex h-12 items-center justify-center rounded-full bg-indigo-600 px-7 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400"
-        >
-          View my work
-        </a>
-        <a
-          href="#contact"
-          className="inline-flex h-12 items-center justify-center rounded-full border border-zinc-300 px-7 text-sm font-semibold text-zinc-800 transition-colors hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-900"
-        >
-          Get in touch
-        </a>
-        <SocialLinks className="sm:ml-2" />
+    <section id="top" aria-labelledby="hero-heading" className="hero shell">
+      <div className="hero-visual">
+        <svg className="hero-word" viewBox="0 0 1200 380" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="developer-fade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="330">
+              <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.85" />
+              <stop offset="75%" stopColor="var(--accent-dark)" stopOpacity="0.55" />
+              <stop offset="90%" stopColor="var(--accent-dark)" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <text x="0" y="330" textLength="1120" lengthAdjust="spacingAndGlyphs" fill="url(#developer-fade)">DEVELOPER</text>
+        </svg>
+        <div className="hero-portrait">
+          <Image src="/images/jether-portrait-cutout.webp" alt="Portrait of Jether Bagor" width={1254} height={1254} sizes="(max-width: 767px) 100vw, 60vw" preload />
+        </div>
       </div>
-
-      <a
-        href="#about"
-        aria-label="Scroll to About"
-        className="mt-16 inline-flex w-fit items-center gap-2 text-sm text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-      >
-        <span>Scroll down</span>
-        <ArrowDownIcon className="h-4 w-4 animate-bounce" />
-      </a>
+      <div className="hero-copy">
+        <p className="hero-greeting">Hello, I’m</p>
+        <h1 id="hero-heading">Jether<br />Bagor</h1>
+        <p className="hero-role">Software Developer</p>
+        <span className="accent-rule" aria-hidden="true" />
+        <p className="hero-description">I build web and Android apps with a QA eye for quality. I care about how things work and how they break.</p>
+        <div className="hero-actions">
+          <a href="#projects" className="button button-primary">View my work</a>
+          <a href="#contact" className="button button-outline">Contact me</a>
+        </div>
+      </div>
+      <dl className="hero-stats">
+        <div><dt>User roles tested</dt><dd>3</dd></div>
+        <div><dt>Platforms (Web + Android)</dt><dd>2</dd></div>
+        <div><dt>Test areas covered</dt><dd>11</dd></div>
+      </dl>
+      <a href="#projects" className="hero-bottom eyebrow">Selected projects</a>
     </section>
   );
 }

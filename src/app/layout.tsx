@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Anton } from "next/font/google";
 import "./globals.css";
 import { site } from "@/content/site";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
@@ -7,17 +7,19 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 // next/font: self-hosted, zero layout shift, no external requests at runtime.
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const mono = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
   display: "swap",
 });
+
+const anton = Anton({ variable: "--font-anton", weight: "400", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -60,10 +62,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
+  themeColor: "#14161A",
 };
 
 export default function RootLayout({
@@ -77,19 +76,19 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${inter.variable} ${mono.variable} ${anton.variable}`}
     >
       <body className="min-h-dvh font-sans antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          forcedTheme="dark"
           disableTransitionOnChange
         >
           {/* Accessibility: keyboard users can jump past the nav. */}
           <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-indigo-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-[var(--accent)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[var(--bg)]"
           >
             Skip to content
           </a>

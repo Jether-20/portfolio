@@ -10,14 +10,14 @@ export function Skills() {
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
         {skills.map((group) => (
           <div key={group.category}>
-            <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+            <h3 className="mb-4 font-mono text-sm font-semibold uppercase tracking-wider text-[var(--text-muted)]">
               {group.category}
             </h3>
             <ul className="flex flex-wrap gap-2.5">
               {group.skills.map((skill) => (
                 <li
                   key={skill}
-                  className="rounded-lg border border-zinc-200 bg-white px-3.5 py-2 text-sm font-medium text-zinc-800 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200"
+                  className="font-mono rounded-sm border border-[var(--border)] bg-[var(--bg-elevated)] px-3.5 py-2 text-sm font-medium text-[var(--text)]"
                 >
                   {skill}
                 </li>

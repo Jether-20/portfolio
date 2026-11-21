@@ -27,17 +27,16 @@ export function Section({
     <section
       id={id}
       aria-labelledby={headingId}
-      className={`mx-auto w-full max-w-5xl px-6 py-20 sm:py-24 ${className}`}
+      className={`content-section ${className}`}
     >
-      <div className="mb-10 sm:mb-12">
+      <div className="section-heading">
         {eyebrow ? (
-          <p className="mb-2 text-sm font-medium uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+          <p className="eyebrow">
             {eyebrow}
           </p>
         ) : null}
         <h2
           id={headingId}
-          className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50"
         >
           {title}
         </h2>
