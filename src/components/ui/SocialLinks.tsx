@@ -48,7 +48,7 @@ export function SocialLinks({
             {...(external
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-sm text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--text)]"
           >
             <Icon className={iconClassName} />
           </a>

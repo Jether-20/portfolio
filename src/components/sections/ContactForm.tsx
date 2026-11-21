@@ -44,7 +44,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor={`${uid}-name`}
-          className="mb-1.5 block text-sm font-medium text-zinc-800 dark:text-zinc-200"
+          className="mb-1.5 block text-sm font-medium text-[var(--text)]"
         >
           Name
         </label>
@@ -56,11 +56,11 @@ export function ContactForm() {
           autoComplete="name"
           aria-invalid={fieldError("name") ? true : undefined}
           aria-describedby={fieldError("name") ? `${uid}-name-error` : undefined}
-          className="w-full rounded-lg border border-zinc-300 bg-white px-3.5 py-2.5 text-zinc-900 placeholder:text-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="w-full rounded-sm border border-[var(--text-muted)] bg-[var(--bg-elevated)] px-3.5 py-2.5 text-[var(--text)] placeholder:text-[var(--text-muted)]"
           placeholder="Your name"
         />
         {fieldError("name") ? (
-          <p id={`${uid}-name-error`} className="mt-1.5 text-sm text-red-600 dark:text-red-400">
+          <p id={`${uid}-name-error`} className="mt-1.5 text-sm text-[var(--accent-hover)]">
             {fieldError("name")}
           </p>
         ) : null}
@@ -69,7 +69,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor={`${uid}-email`}
-          className="mb-1.5 block text-sm font-medium text-zinc-800 dark:text-zinc-200"
+          className="mb-1.5 block text-sm font-medium text-[var(--text)]"
         >
           Email
         </label>
@@ -81,11 +81,11 @@ export function ContactForm() {
           autoComplete="email"
           aria-invalid={fieldError("email") ? true : undefined}
           aria-describedby={fieldError("email") ? `${uid}-email-error` : undefined}
-          className="w-full rounded-lg border border-zinc-300 bg-white px-3.5 py-2.5 text-zinc-900 placeholder:text-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="w-full rounded-sm border border-[var(--text-muted)] bg-[var(--bg-elevated)] px-3.5 py-2.5 text-[var(--text)] placeholder:text-[var(--text-muted)]"
           placeholder="you@example.com"
         />
         {fieldError("email") ? (
-          <p id={`${uid}-email-error`} className="mt-1.5 text-sm text-red-600 dark:text-red-400">
+          <p id={`${uid}-email-error`} className="mt-1.5 text-sm text-[var(--accent-hover)]">
             {fieldError("email")}
           </p>
         ) : null}
@@ -94,7 +94,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor={`${uid}-message`}
-          className="mb-1.5 block text-sm font-medium text-zinc-800 dark:text-zinc-200"
+          className="mb-1.5 block text-sm font-medium text-[var(--text)]"
         >
           Message
         </label>
@@ -107,11 +107,11 @@ export function ContactForm() {
           aria-describedby={
             fieldError("message") ? `${uid}-message-error` : undefined
           }
-          className="w-full resize-y rounded-lg border border-zinc-300 bg-white px-3.5 py-2.5 text-zinc-900 placeholder:text-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+          className="w-full resize-y rounded-sm border border-[var(--text-muted)] bg-[var(--bg-elevated)] px-3.5 py-2.5 text-[var(--text)] placeholder:text-[var(--text-muted)]"
           placeholder="Tell me about your project or just say hi."
         />
         {fieldError("message") ? (
-          <p id={`${uid}-message-error`} className="mt-1.5 text-sm text-red-600 dark:text-red-400">
+          <p id={`${uid}-message-error`} className="mt-1.5 text-sm text-[var(--accent-hover)]">
             {fieldError("message")}
           </p>
         ) : null}
@@ -120,7 +120,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="inline-flex h-12 w-full items-center justify-center rounded-full bg-indigo-600 px-7 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto dark:bg-indigo-500 dark:hover:bg-indigo-400"
+        className="button button-primary disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isPending ? "Sending…" : "Send message"}
       </button>
@@ -131,9 +131,9 @@ export function ContactForm() {
         aria-live="polite"
         className={
           state.status === "success"
-            ? "text-sm font-medium text-green-600 dark:text-green-400"
+            ? "text-sm font-medium text-[var(--text-muted)]"
             : state.status === "error"
-              ? "text-sm font-medium text-red-600 dark:text-red-400"
+              ? "text-sm font-medium text-[var(--accent-hover)]"
               : "sr-only"
         }
       >
