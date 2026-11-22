@@ -1,19 +1,16 @@
 /**
- * About section (Server Component). Copy lives in site/about content, not JSX.
+ * About section (Server Component).
  */
-import { site } from "@/content/site";
 import { Section } from "@/components/ui/Section";
 
 const paragraphs = [
-  "I am a Computer Science graduate passionate about software development and continuous learning.",
-  "I enjoy building practical systems that solve real-world problems while continuously improving my technical and communication skills.",
+  "I'm a software developer who loves turning real-world problems into working solutions. Solving business problems with a software engineering mindset is what excites me most. Recently, I led QA testing on a multi-role service platform (customer, technician, and admin) across web and Android, documenting every issue so it could be fixed. Challenges don't scare me: if something fails, I try again and again until it's solved.",
 ];
 
 export function About() {
   return (
     <Section id="about" eyebrow="About" title="A bit about me">
       <div className="max-w-3xl space-y-5 text-lg leading-relaxed text-[var(--text-muted)]">
-        <p>{site.tagline}</p>
         {paragraphs.map((text) => (
           <p key={text}>{text}</p>
         ))}
